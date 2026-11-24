@@ -43,8 +43,8 @@ Originally a Bocconi econometrics group project on Croatia, adapting it to Singa
 - **Out-of-sample forecasting:** each forecast uses only data available at the time (t-1), comparison of expanding and rolling estimation windows.
 - **Forecast evaluation:** RMSE, MAE, bias, Diebold–Mariano tests of equal accuracy with the Harvey–Leybourne–Newbold small-sample correction.
 - **Outliers:** COVID quarters kept out of estimation (also the quarters whose lags fall in the COVID periods)
-**Limitations:** forecasts use present day revised data instead of originally published data at the time, which would make real-time errors larger. 
-**Next step:** nowcasting using monthly indicators (exports, financial conditions, payment & spending data etc.) to estimate the quarter before the official figure is released.
+- **Limitations:** forecasts use present day revised data instead of originally published data at the time, which would make real-time errors larger. 
+- **Next step:** nowcasting using monthly indicators (exports, financial conditions, payment & spending data etc.) to estimate the quarter before the official figure is released.
 
 ---
 To reproduce, run `code/01_download.R` and then `code/02_forecast.R` from the repository root.
