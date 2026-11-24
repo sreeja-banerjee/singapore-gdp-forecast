@@ -47,4 +47,4 @@ Originally a Bocconi econometrics group project on Croatia, adapting it to Singa
 **Next step:** nowcasting using monthly indicators (exports, financial conditions, payment & spending data etc.) to estimate the quarter before the official figure is released.
 
 ---
-To reproduce, run `R/01_download.R` and then `R/02_forecast.R` from the repository root.
+To reproduce, run `code/01_download.R` and then `code/02_forecast.R` from the repository root.
