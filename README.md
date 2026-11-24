@@ -1,7 +1,7 @@
 # Forecasting Singapore's GDP Growth
 
 <p align="center">
-  <img src="assets/sg-gdp-terminal.svg" width="760" alt="Retro terminal: runs the forecast, plots Singapore's real GDP growth 2005-2026 with the GFC and COVID recessions marked, and prints the three main findings">
+  <img src="assets/sg-gdp-terminal.svg" width="650" alt="Retro terminal: runs the forecast, plots Singapore's real GDP growth 2005-2026 with the GFC and COVID recessions marked, and prints the three main findings">
 </p>
 
 **Forecasting Singapore's GDP growth using simple econometric models, and understanding if foreign demand helps make a better forecast?**
@@ -22,7 +22,7 @@ The project is an extension of the coursework done from my Econometrics class in
 3. **Simple models have an over-forecasting problem post 2010, because Singapore's GDP growth trend dropped.** Average growth dropped from 8.1% (2005–07) to 4.4% (2010–19). Simple models were estimated on data going back to 1975, and therefore over-forecasted ~ 1.7 – 2.2 pp on average in during the 2010-19 period.
 4. **A rolling window estimation fixes the bias, limited to the simplest models.** Using a 15-year window, the historical mean's 2010–19 bias almost halves (2.16 to 1.03 pp) and its RMSE (6.12) becomes the lowest. However, models using explanatory variables perform worse since they lose data points.
 
-![Cumulative squared-error gain over the AR benchmark](output/figures/cumulative_sq_error_vs_ar.png)
+![Cumulative squared-error gain over the AR benchmark](figures/cumulative_sq_error_vs_ar.png)
 
 *Rising line indicates that the model is beating the AR benchmark over that stretch.*
 
