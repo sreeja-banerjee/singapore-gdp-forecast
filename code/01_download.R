@@ -1,21 +1,12 @@
 # ============================================================
 # Singapore GDP growth forecasting project
-# (Download the dataset)
 # ============================================================
-# Run from the project root (open singapore-gdp-forecasting.Rproj in RStudio,
-# or setwd() to the repo folder once). Nothing here depends on RStudio.
-#
-# Writes:
-#   data/raw/<series>.csv              each series exactly as downloaded
-#   data/processed/sg_quarterly.csv    merged quarterly panel used by 02_forecast.R
-#   data/processed/vintage.txt         download date (GDP gets revised, so record it)
-#
+# (downloading the relevant datasets)
 # All sources are free and need no API key:
 #   SingStat Table Builder  - real GDP, seasonally adjusted, chained 2015 dollars
-#   data.gov.sg (MOM)       - overall unemployment rate, seasonally adjusted
-#   FRED                    - US and euro-area real GDP, Fed funds rate,
-#                             BIS broad nominal effective exchange rate (NEER) for Singapore
-#   SingStat (optional)     - CPI; see CPI_TABLE_ID below
+#   data.gov.sg (MOM)       - unemployment rate var
+#   FRED                    - US & euro-zone real GDP, Fed funds rate,
+#                             (NEER) for Singapore
 # ============================================================
 
 required <- c("httr", "jsonlite", "dplyr", "tidyr", "readr")
@@ -59,11 +50,7 @@ FRED_SERIES <- c(
 
 UA <- user_agent("singapore-gdp-forecasting (github portfolio project)")
 
-# ------------------------------------------------------------
-# Helpers
-# ------------------------------------------------------------
-
-# Turn period labels into the first day of the period:
+# Format the period labels into dates:
 #   "1975 1Q" -> 1975-01-01, "2024 Jan" -> 2024-01-01, "1992-03" -> 1992-03-01
 parse_period <- function(x) {
   x <- trimws(x)
@@ -89,12 +76,14 @@ parse_period <- function(x) {
 }
 
 # First day of the quarter containing each date.
+
 quarter_start <- function(d) {
   as.Date(sprintf("%s-%02d-01", format(d, "%Y"),
                   (as.integer(format(d, "%m")) - 1) %/% 3 * 3 + 1))
 }
 
 # Parse a SingStat Table Builder JSON response into a tibble(date, value).
+
 parse_singstat_json <- function(txt, series_no = 1) {
   js <- fromJSON(txt, simplifyVector = FALSE)
   rows <- js$Data$row
